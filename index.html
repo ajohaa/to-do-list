@@ -13,7 +13,8 @@
             integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="style.css" />
+
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -21,13 +22,12 @@
             <!-- place navbar here -->
         </header>
         <main class="container mt-5">
-            <div class="class row justify-content-center">
-                <div class="col-md-6 col-lg-6">
-                    <h2 class="text-center"> to-do list !</h2>
-
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <h2 class="text-center">to-do list !</h2>
                     <div class="row">
-                        <div class="class col-8">
-                            <input type="text" id="textInput" class="form-control" placeholder="✎ add a new task..." />
+                        <div class="col-8">
+                            <input type="text" id="taskInput" class="form-control" placeholder="✎ add a new task...">
                         </div>
                         <div class="col-4">
                             <button id="addTaskBtn" class="btn btn-primary w-100">add task ⋆˚꩜｡</button>
@@ -35,12 +35,14 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <ul id="taskList" class="list-group mt-3"></ul>
+                            <ul id="taskList" class="list-group mt-3">
+                                
+                            </ul>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button id="clearTaskBtn" class= "btn btn-danger w-100">clear all tasks .✦ ݁˖.</button>
+                            <button id="clearTasksBtn" class=" btn btn-danger w-100">clear all tasks .✦ ݁˖.</button>
                         </div>
                     </div>
                 </div>
