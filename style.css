@@ -1,14 +1,90 @@
- /* body {
+body {
    background: url('bg.avif') no-repeat fixed;
     background-size: cover;
 }
 
-*/
-
 .container {
+    display: flex;
+    flex-direction: column;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 50%;
+    height: 95vh;
+    margin: 50px auto;
+}
+
+.scroll-container {
+  margin-top:2vh;
+  height: 70vh;
+  overflow: auto;     /* Adds scrollbars only when content exceeds size */
+  border: none;
+  border-radius: 30px;
+}
+
+#taskList {
+  flex: 1;
+  overflow-y: auto; 
+  border-radius: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 2px solid;
+    border-radius: 20px;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+    background-color: #7b9ed1;
+    border-color: #6a80be;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #6a80be;
+    border-color: #5a66ab;
+    color: #fff;
+}
+
+.btn-danger {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: #d45d69;
+    border-color: #bd2130;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #a50e1f;
+    color: #fff;
+}
+
+.btn-success {
+    border-radius: 50px;
+    background-color: #9bd39b;
+    border-color: #89bd89;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #89bd89;
+    border-color: #78a678;
+    color: #fff;
+}
+
+/* responsive design */
+
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+    }
+     .btn {
+        font-size: clamp(14px, 2vw, 18px);
+        padding: 4px 8px;
+    }
 }

@@ -1,62 +1,71 @@
 <!doctype html>
 <html lang="en" data-bs-theme="light">
-    <head>
-        <title>to-do list</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <title>to-do list</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap CSS v5.3.8 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous"
-        />
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-8">
-                    <h2 class="text-center mb-3">to-do list !</h2>
-                    <div class="row">
-                        <div class="col-8">
-                            <input type="text" id="taskInput" class="form-control" placeholder="✎ add a new task...">
-                        </div>
-                        <div class="col-4">
-                            <button id="addTaskBtn" class="btn btn-primary w-100">add task ⋆˚꩜｡</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <ul id="taskList" class="list-group mt-2 mb-2">
-                                
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button id="clearTasksBtn" class=" btn btn-danger w-100">clear all tasks .✦ ݁˖.</button>
-                        </div>
-                    </div>
-                </div>
+  <body>
+    <header>
+      <!-- place navbar here -->
+    </header>
+    <main class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-8">
+          <h2 class="text-center mb-3">to-do list !</h2>
+          <div class="row">
+            <div class="col-8">
+              <input
+                type="text"
+                id="taskInput"
+                class="form-control"
+                placeholder="✎ add a new task..."
+              />
             </div>
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"
-        ></script>
-        <script src="scripts.js"></script>
-    </body>
+            <div class="col-4">
+              <button id="addTaskBtn" class="btn btn-primary w-100">
+                add task
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="scroll-container">
+                <ul id="taskList" class="list-group mt-2 mb-2"></ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button id="clearTasksBtn" class="btn btn-danger w-100">
+                clear all tasks .✦ ݁˖.
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts.js"></script>
+  </body>
 </html>

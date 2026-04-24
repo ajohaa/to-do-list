@@ -31,7 +31,7 @@ function displayTasks() {
             'align-items-center'
         )
         //set innerHTML of the list with a task and remove button
-        li.innerHTML = `${task} <button class='btn btn-success btn-sm' onclick='removeTask(${index})'>complete ✓</button>`
+        li.innerHTML = `${task} <button class='btn btn-success btn-sm' onclick='removeTask(${index})'>✓</button>`
         //append the list item to the task list in the HTML
         taskList.appendChild(li)
     })
