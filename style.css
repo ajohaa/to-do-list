@@ -27,6 +27,23 @@ body {
   flex: 1;
   overflow-y: auto; 
   border-radius: 30px;
+  padding: 0;
+}
+
+#taskList .list-group-item {
+  border-radius: 30px !important;
+  margin-bottom: 9px;
+  border: 1px solid #ddd;
+}
+
+/* remove the default “connected” borders */
+#taskList .list-group-item + .list-group-item {
+  border-top: 1px solid #ddd;
+}
+
+.list-group-item.completed {
+  opacity: 0.6;
+  background-color: #f0f0f0;
 }
 
 .btn {
@@ -62,6 +79,7 @@ body {
     color: #fff;
 }
 
+
 .btn-success {
     border-radius: 50px;
     background-color: #9bd39b;
@@ -73,6 +91,12 @@ body {
     background-color: #89bd89;
     border-color: #78a678;
     color: #fff;
+}
+
+.list-group-item.removing {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.2s ease;
 }
 
 /* responsive design */
