@@ -1,5 +1,5 @@
 body {
-   background: url('bg.avif') no-repeat fixed;
+    background: url('bg.avif') no-repeat fixed;
     background-size: cover;
 }
 
@@ -7,54 +7,63 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 50%;
-    height: 95vh;
+    height: max-content;
     margin: 50px auto;
 }
 
 .scroll-container {
-  margin-top:2vh;
-  height: 70vh;
-  overflow: auto;     /* Adds scrollbars only when content exceeds size */
-  border: none;
-  border-radius: 30px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    height: 60vh;
+    overflow: auto;
+    /* Adds scrollbars only when content exceeds size */
+    border: none;
 }
 
 .form-control {
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 10px;
 }
 
 #taskList {
-  flex: 1;
-  overflow-y: auto; 
-  border-radius: 30px;
-  padding: 0;
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 30px;
+    padding: 0;
 }
 
 #taskList .list-group-item {
-  border-radius: 30px !important;
-  margin-bottom: 9px;
-  border: 1px solid #ddd;
+    border-radius: 30px !important;
+    margin-bottom: 9px;
+    border: 1px solid #ddd;
 }
 
-/* remove the default “connected” borders */
+/* remove the default connected borders */
 #taskList .list-group-item + .list-group-item {
-  border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 .list-group-item.completed {
-  opacity: 0.6;
-  background-color: #f0f0f0;
+    opacity: 0.6;
+    background-color: #f0f0f0;
+}
+
+.list-group-item {
+  transition: all 0.25s ease;
+}
+
+.list-group-item span {
+  transition: all 0.25s ease;
 }
 
 .btn {
     padding: 10px 20px;
     border: 2px solid;
-    border-radius: 20px;
+    border-radius: 25px;
     font-size: clamp(14px, 2vw, 16px);
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
@@ -65,6 +74,10 @@ body {
     color: #fff;
 }
 
+.addTaskBtn {
+    padding: 10px;
+}
+
 .btn-primary:hover {
     background-color: #6a80be;
     border-color: #5a66ab;
@@ -72,18 +85,16 @@ body {
 }
 
 .btn-danger {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
     background-color: #d45d69;
     border-color: #bd2130;
     color: #fff;
 }
+
 .btn-danger:hover {
     background-color: #bd2130;
     border-color: #a50e1f;
     color: #fff;
 }
-
 
 .btn-success {
     border-radius: 50px;
@@ -92,27 +103,41 @@ body {
     color: #fff;
 }
 
+ul .btn-danger {
+    border-radius: 50px;
+}
+
 .btn-success:hover {
     background-color: #89bd89;
     border-color: #78a678;
     color: #fff;
 }
 
+.clearTaskBtn,
+.undoBtn {
+    margin-top: auto;
+}
+
 .list-group-item.removing {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.2s ease;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.2s ease;
 }
 
 /* responsive design */
 
 @media (max-width: 1200px) {
     .container {
-        width: 100%;
+        width: 80%;
         height: auto;
         margin: 10px auto;
     }
-     .btn {
+
+    .scroll-container {
+        height: 60vh;
+    }
+
+    .btn .form-control {
         font-size: clamp(14px, 2vw, 18px);
         padding: 4px 8px;
     }

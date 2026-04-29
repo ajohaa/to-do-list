@@ -1,5 +1,15 @@
 let tasks = []; //empty array to store tasks
 let completed = []; //empty array to store completed tasks
+// variables to store last action info for undo functionality
+let lastAction = null;
+
+let lastTask = null;
+let lastCompleted = null;
+let lastIndex = null;
+
+// for clear all
+let lastTasks = [];
+let lastCompletedList = [];
 
 document.getElementById('addTaskBtn').addEventListener('click', function () {
     //get the value of the input field
@@ -50,7 +60,7 @@ function displayTasks() {
             </span>
 
             <button class="btn ${btnClass} btn-sm"
-                onclick="toggleTask(${index})">
+                onclick="toggleTask(${index}, this)">
                 ${btnIcon}
             </button>
         `;
@@ -59,17 +69,33 @@ function displayTasks() {
     });
 }
 
-function toggleTask(index) {
+function toggleTask(index, button) {
 
-    if (!completed[index]) {
-        // mark complete
+     if (!completed[index]) {
+        // SAVE before changing
+        lastAction = 'complete';
+        lastIndex = index;
+
         completed[index] = true;
+        displayTasks();
     } else {
-        // delete it
-        tasks.splice(index, 1);
-        completed.splice(index, 1);
+        const li = button.closest('li');
+
+        // save before deleting
+        lastAction = 'delete';
+        lastTask = tasks[index];
+        lastCompleted = completed[index];
+        lastIndex = index;
+
+        // animate
+         li.classList.add('removing');
+
+        setTimeout(() => {
+            tasks.splice(index, 1);
+            completed.splice(index, 1);
+            displayTasks();
+        }, 300);
     }
-    displayTasks();
 }
 
 // old removeTask function without animation
@@ -80,22 +106,42 @@ function toggleTask(index) {
     displayTasks();
 } */
 
-function removeTask(index, button) {
-    const li = button.closest('li');
-
-    // add animation class
-    li.classList.add('removing');
-
-    setTimeout(() => {
-        tasks.splice(index, 1);
-        displayTasks();
-    }, 300);
-}
-
-
 document.getElementById('clearTaskBtn').addEventListener('click', function () {
-    //clear the task array
+      // SAVE everything before clearing
+    lastAction = 'clear';
+    lastTasks = [...tasks];
+    lastCompletedList = [...completed];
+
+    //clear the task arrays
     tasks = [];
+    completed = [];
     //update task list display
+    displayTasks();
+});
+
+document.getElementById('undoBtn').addEventListener('click', function () {
+
+    if (!lastAction) return;
+
+    if (lastAction === 'complete') {
+        // undo completion
+        completed[lastIndex] = false;
+    }
+
+    else if (lastAction === 'delete') {
+        // restore deleted task
+        tasks.splice(lastIndex, 0, lastTask);
+        completed.splice(lastIndex, 0, lastCompleted);
+    }
+
+    else if (lastAction === 'clear') {
+        // restore full list
+        tasks = [...lastTasks];
+        completed = [...lastCompletedList];
+    }
+
+    // reset undo so it only works once
+    lastAction = null;
+
     displayTasks();
 });
