@@ -23,6 +23,11 @@ body {
   border-radius: 30px;
 }
 
+.form-control {
+    border-radius: 20px;
+    padding: 10px;
+}
+
 #taskList {
   flex: 1;
   overflow-y: auto; 
