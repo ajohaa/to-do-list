@@ -1,8 +1,10 @@
 let tasks = []; //empty array to store tasks
 let completed = []; //empty array to store completed tasks
+let totalTasks = 0; // variable to store total number of tasks (not shown on screen but used for progress bar calculation)
+let activeTasks = 0; // variable to store active number of tasks
+let completedTasks = 0; // variable to store number of completed tasks
 // variables to store last action info for undo functionality
 let lastAction = null;
-
 let lastTask = null;
 let lastCompleted = null;
 let lastIndex = null;
@@ -19,10 +21,16 @@ document.getElementById('addTaskBtn').addEventListener('click', function () {
         //add task to the array
         tasks.push(taskInput);
         completed.push(false);
+        activeTasks++;
+        totalTasks++;
         //clear input field value
         document.getElementById('taskInput').value = ''
         // update task list display
         displayTasks()
+        // update task counters
+        document.getElementById('activeTasks').textContent = activeTasks;
+        document.getElementById('completedTasks').textContent = completedTasks;
+        updateProgressBar();
     }
 });
 
@@ -69,15 +77,29 @@ function displayTasks() {
     });
 }
 
+function updateProgressBar() {
+    let progressBar = document.getElementById('progressBar');
+    let progress = document.getElementById('progress');
+    let percentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+    // ensure percentage doesn't exceed 100%
+    percentage = Math.min(percentage, 100);
+    progressBar.style.width = percentage + '%';
+    progress.textContent = Math.round(percentage) + '%';
+}
+// this is not working im gonna crash out
+
 function toggleTask(index, button) {
 
-     if (!completed[index]) {
+    if (!completed[index]) {
         // SAVE before changing
         lastAction = 'complete';
         lastIndex = index;
 
         completed[index] = true;
+        completedTasks++;
         displayTasks();
+        document.getElementById('completedTasks').textContent = completedTasks;
+        updateProgressBar();
     } else {
         const li = button.closest('li');
 
@@ -88,13 +110,18 @@ function toggleTask(index, button) {
         lastIndex = index;
 
         // animate
-         li.classList.add('removing');
+        li.classList.add('removing');
 
         setTimeout(() => {
             tasks.splice(index, 1);
             completed.splice(index, 1);
             displayTasks();
         }, 300);
+        activeTasks--;
+        document.getElementById('activeTasks').textContent = activeTasks;
+        document.getElementById('completedTasks').textContent = completedTasks;
+        // update progress bar
+        updateProgressBar();
     }
 }
 
@@ -107,7 +134,8 @@ function toggleTask(index, button) {
 } */
 
 document.getElementById('clearTaskBtn').addEventListener('click', function () {
-      // SAVE everything before clearing
+    // SAVE everything before clearing
+    lastTotalTasks = totalTasks;
     lastAction = 'clear';
     lastTasks = [...tasks];
     lastCompletedList = [...completed];
@@ -117,6 +145,14 @@ document.getElementById('clearTaskBtn').addEventListener('click', function () {
     completed = [];
     //update task list display
     displayTasks();
+    // reset task counters
+    totalTasks = 0;
+    activeTasks = 0;
+    completedTasks = 0;
+    document.getElementById('activeTasks').textContent = activeTasks;
+    document.getElementById('completedTasks').textContent = completedTasks;
+    // reset progress bar
+    updateProgressBar();
 });
 
 document.getElementById('undoBtn').addEventListener('click', function () {
@@ -126,18 +162,35 @@ document.getElementById('undoBtn').addEventListener('click', function () {
     if (lastAction === 'complete') {
         // undo completion
         completed[lastIndex] = false;
+        completedTasks--;
+        document.getElementById('completedTasks').textContent = completedTasks;
+        // update progress bar
+        updateProgressBar();
     }
 
     else if (lastAction === 'delete') {
         // restore deleted task
         tasks.splice(lastIndex, 0, lastTask);
         completed.splice(lastIndex, 0, lastCompleted);
+        activeTasks++;
+        if (lastCompleted) completedTasks++;
+        document.getElementById('activeTasks').textContent = activeTasks;
+        document.getElementById('completedTasks').textContent = completedTasks;
+        // update progress bar
+        updateProgressBar();
     }
 
     else if (lastAction === 'clear') {
         // restore full list
         tasks = [...lastTasks];
         completed = [...lastCompletedList];
+        activeTasks = tasks.length;
+        completedTasks = completed.filter(c => c).length; // count how many were completed
+        totalTasks = lastTotalTasks; // restore total tasks
+        document.getElementById('activeTasks').textContent = activeTasks;
+        document.getElementById('completedTasks').textContent = completedTasks;
+        // reset progress bar
+        updateProgressBar();
     }
 
     // reset undo so it only works once
@@ -145,3 +198,5 @@ document.getElementById('undoBtn').addEventListener('click', function () {
 
     displayTasks();
 });
+
+// ok so the progress bar still sucks and does not work and i am about to throw my computer out the window
