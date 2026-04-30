@@ -3,7 +3,7 @@ body {
     background-size: cover;
     font-family: giulia-plain, sans-serif;
     font-style: normal;
-    color: rgb(89, 152, 110) !important;
+    color: rgb(96, 154, 115) !important;
 }
 
 body::before {
@@ -31,7 +31,7 @@ h5 {
 }
 
 li {
-    color: rgb(67, 131, 72) !important;
+    color: rgb(97, 153, 111) !important;
     font-size: 1.25em;
     font-weight: 180;
 }
