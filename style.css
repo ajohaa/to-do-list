@@ -63,6 +63,10 @@ li {
     animation: fadeIn 0.6s ease-out;
 }
 
+.empty-state {
+animation: fadeInLowerOpacity 0.6s ease-out;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -70,6 +74,17 @@ li {
     }
     to {
         opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLowerOpacity {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 0.6;
         transform: translateY(0);
     }
 }
@@ -252,6 +267,24 @@ ul .btn-success {
 .undoBtn {
     margin-top: auto;
     font-weight: 180;
+}
+
+ul .btn-success, ul .btn-danger {
+    transition: all 0.2s ease;
+}
+
+ul .btn-success:active,
+ul .btn-danger:active {
+    transform: scale(0.92);
+}
+
+.empty-state {
+    font-size: 1.25em;
+    color: rgb(121, 134, 122) !important;
+    opacity: 0.6;
+    font-weight: 150;
+    margin-top: 25%;
+        transition: all 0.25s ease;
 }
 
 .list-group-item.removing {

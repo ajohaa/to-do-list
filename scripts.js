@@ -31,7 +31,7 @@ function saveState() {
         tasks: [...tasks], // spread operators so it doesn't store any references
         completed: [...completed],
         totalTasksEver,
-        totalCompletedEver
+        totalCompletedEver,
     });
 }
 
@@ -61,11 +61,16 @@ document.getElementById("taskInput").addEventListener("keydown", function (e) {
 });
 
 function displayTasks() {
-    // select taskList in the HTML
     let taskList = document.getElementById("taskList");
-    // clear the existing html list
+    let emptyState = document.getElementById("emptyState");
+
     taskList.innerHTML = "";
-    // loop through each task in the array and create a list item for each
+
+    if (tasks.length === 0) {
+        emptyState.style.display = "block";
+    } else {
+        emptyState.style.display = "none";
+    }
     tasks.forEach((task, index) => {
         // create <li> element for each task
         let li = document.createElement("li");
@@ -97,18 +102,17 @@ function displayTasks() {
 }
 
 function updateStats() {
-    document.getElementById("activeTasks").textContent = tasks.length - getCompletedCount();
+    document.getElementById("activeTasks").textContent =
+        tasks.length - getCompletedCount();
     document.getElementById("completedTasks").textContent = totalCompletedEver;
 }
 
 function updateProgressBar() {
-    const progressBar = document.getElementById('progressBar');
-    const progress = document.getElementById('progress');
+    const progressBar = document.getElementById("progressBar");
+    const progress = document.getElementById("progress");
 
     const percentage =
-        totalTasksEver === 0
-            ? 0
-            : (totalCompletedEver / totalTasksEver) * 100;
+        totalTasksEver === 0 ? 0 : (totalCompletedEver / totalTasksEver) * 100;
 
     progressBar.style.width = `${percentage}%`;
     progress.textContent = `${Math.round(percentage)}%`;
@@ -144,7 +148,7 @@ document.getElementById("clearTaskBtn").addEventListener("click", () => {
     completed = [];
     totalTasksEver = 0;
     totalCompletedEver = 0;
-    
+
     displayTasks();
     updateProgressBar();
     updateStats();
