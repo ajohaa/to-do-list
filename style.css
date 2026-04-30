@@ -12,11 +12,9 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(
-        circle at top,
-        rgba(255, 255, 255, 0.35),
-        rgba(200, 230, 210, 0.25)
-    );
+    background: radial-gradient(circle at top,
+            rgba(255, 255, 255, 0.35),
+            rgba(200, 230, 210, 0.25));
     pointer-events: none;
 }
 
@@ -64,7 +62,7 @@ li {
 }
 
 .empty-state {
-animation: fadeInLowerOpacity 0.6s ease-out;
+    animation: fadeInLowerOpacity 0.6s ease-out;
 }
 
 @keyframes fadeIn {
@@ -72,6 +70,7 @@ animation: fadeInLowerOpacity 0.6s ease-out;
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -83,6 +82,7 @@ animation: fadeInLowerOpacity 0.6s ease-out;
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 0.6;
         transform: translateY(0);
@@ -269,7 +269,8 @@ ul .btn-success {
     font-weight: 180;
 }
 
-ul .btn-success, ul .btn-danger {
+ul .btn-success,
+ul .btn-danger {
     transition: all 0.2s ease;
 }
 
@@ -284,7 +285,7 @@ ul .btn-danger:active {
     opacity: 0.6;
     font-weight: 150;
     margin-top: 25%;
-        transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 .list-group-item.removing {
@@ -309,5 +310,33 @@ ul .btn-danger:active {
     .btn .form-control {
         font-size: 1.5em;
         padding: 4px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        height: auto;
+        margin: 10px auto;
+    }
+/* make all the font sizes smaller */
+    h1 {
+        font-size: 2.5em;
+    }
+    h5 {
+        font-size: 1.25em;
+    }
+    li, .empty-state, .btn, .form-control {
+        font-size: 1em;
+    }
+    .btn {
+        padding: 8px 16px;
+    }
+    .form-control {
+        padding: 8px;
+    }
+
+    .scroll-container {
+        height: 50vh;
     }
 }
