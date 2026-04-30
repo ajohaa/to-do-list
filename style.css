@@ -1,11 +1,9 @@
-/* going for a very cute green pastel vibe */
-
 body {
-    background: url('bg.avif') no-repeat fixed;
+    background: url('background.svg') no-repeat fixed;
     background-size: cover;
     font-family: giulia-plain, sans-serif;
     font-style: normal;
-    color: rgb(89, 152, 106) !important;
+    color: rgb(89, 152, 110) !important;
 }
 
 body::before {
@@ -24,7 +22,7 @@ h1 {
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0.01em;
-    color: #7aa88c;
+    color: #57a07e !important;
 }
 
 h5 {
@@ -41,11 +39,11 @@ li {
 .container {
     display: flex;
     flex-direction: column;
-    background: rgba(244, 255, 238, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
-    border: 4px solid rgba(143, 184, 151, 0.35);
+    border: 2px solid rgba(244, 255, 238, 0.6);
     border-radius: 32px;
     padding: 26px;
 
@@ -55,10 +53,8 @@ li {
 
     width: 60%;
     margin: 30px auto;
-}
-
-.container {
     animation: fadeIn 0.6s ease-out;
+
 }
 
 .empty-state {
@@ -84,7 +80,7 @@ li {
     }
 
     to {
-        opacity: 0.6;
+        opacity: 0.8;
         transform: translateY(0);
     }
 }
@@ -110,22 +106,22 @@ li {
 .form-control {
     font-size: 1.25em;
     font-weight: 150;
-    color: rgb(67, 131, 72) !important;
-    background: rgb(216, 245, 201);
-    border: 3px solid #8fb897;
+    color: #7aad92;
+    background: rgba(224, 242, 225, 0.57);
+    border: 3px solid #92c2a2;
     border-radius: 30px;
     padding: 10px;
 }
 
 .form-control:focus {
-    background: rgb(216, 245, 201);
-    border-color: #8fb897;
-    color: rgb(67, 131, 72);
-    box-shadow: 0 0 8px rgba(82, 217, 100, 0.6);
+    background: rgb(227, 255, 221);
+    border-color: #92c2a2;
+    color: #7aad92;
+    box-shadow: 0 0 8px rgba(82, 217, 114, 0.6);
 }
 
 .form-control::placeholder {
-    color: rgb(67, 131, 72);
+    color: #7aad92 !important;
     opacity: 1;
 }
 
@@ -182,14 +178,16 @@ li {
 }
 
 .progress {
-    height: 12px;
+    height: 15px;
     border-radius: 999px;
-    background-color: rgba(0, 0, 0, 0.06);
+    border: 2px solid #ffffffbc;
+    background-color: rgba(255, 255, 255, 0.06);
     overflow: hidden;
 }
 
 .progress-bar {
-    background: linear-gradient(90deg, #b7e4c7, #95d5b2);
+    background: linear-gradient(90deg, #92d6b1, #6daf83);
+    border-radius: 999px;
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 0 12px rgba(149, 213, 178, 0.4);
 }
@@ -284,7 +282,7 @@ ul .btn-danger:active {
 .empty-state {
     font-size: 1.25em;
     color: rgb(121, 134, 122) !important;
-    opacity: 0.6;
+    opacity: 0.8;
     font-weight: 150;
     margin-top: 22%;
     transition: all 0.25s ease;
