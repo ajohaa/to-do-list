@@ -232,7 +232,7 @@ button {
 }
 
 .btn-primary:hover {
-    background-color: #7aa88d;
+    background-color: #8fb897;
     border-color: #6f9a7f;
 }
 
@@ -249,7 +249,7 @@ button {
 }
 
 .btn-danger:hover {
-    background-color: #d98693;
+    background-color: #e89aa6;
     border-color: #c77482;
 }
 
