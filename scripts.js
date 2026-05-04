@@ -52,6 +52,7 @@ document.getElementById("addTaskBtn").addEventListener("click", () => {
     displayTasks();
     updateProgressBar();
     updateStats();
+    saveToLocalStorage();
 });
 
 document.getElementById("taskInput").addEventListener("keydown", function (e) {
@@ -138,6 +139,7 @@ function toggleTask(index, button) {
         displayTasks();
         updateProgressBar();
         updateStats();
+        saveToLocalStorage();
     }
 }
 
@@ -152,6 +154,7 @@ document.getElementById("clearTaskBtn").addEventListener("click", () => {
     displayTasks();
     updateProgressBar();
     updateStats();
+    saveToLocalStorage();
 });
 
 // AI helped with this, I just thought it'd be cool to add an undo button if the user clicked something accidentally
@@ -170,5 +173,38 @@ function undo() {
     displayTasks();
     updateProgressBar();
     updateStats();
+    saveToLocalStorage();
 }
 // end of AI code
+
+// local storage code, also AI helped with this, I just wanted the site to remember your tasks if you accidentally close the tab or refresh
+
+function saveToLocalStorage() {
+    const data = {
+        tasks,
+        completed,
+        totalTasksEver,
+        totalCompletedEver
+    };
+
+    localStorage.setItem('todoApp', JSON.stringify(data));
+}
+
+function loadFromLocalStorage() {
+    const saved = localStorage.getItem('todoApp');
+
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    tasks = data.tasks || [];
+    completed = data.completed || [];
+    totalTasksEver = data.totalTasksEver || 0;
+    totalCompletedEver = data.totalCompletedEver || 0;
+
+    displayTasks();
+    updateStats();
+    updateProgressBar();
+}
+
+loadFromLocalStorage();

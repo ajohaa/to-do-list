@@ -213,6 +213,11 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.btn:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
 .addTaskBtn {
     padding: 10px;
     font-weight: 180;
@@ -231,6 +236,12 @@ button {
     border-color: #6f9a7f;
 }
 
+.btn-primary:active {
+    background-color: #7aa88d !important;
+    border-color: #6f9a7f !important;
+}
+
+
 .btn-danger {
     background-color: #e89aa6;
     border-color: #d98693;
@@ -240,6 +251,11 @@ button {
 .btn-danger:hover {
     background-color: #d98693;
     border-color: #c77482;
+}
+
+.btn-danger:active {
+    background-color: #d98693 !important;
+    border-color: #c77482 !important;
 }
 
 ul .btn-danger {
