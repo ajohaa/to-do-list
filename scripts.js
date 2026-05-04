@@ -5,16 +5,6 @@ let history = []; // stores a snapshot of the site's state before each action fo
 let totalTasksEver = 0; // variable to store total tasks ever added, for stats and progress bar calculations
 let totalCompletedEver = 0; // variable to store total tasks ever completed, for stats and progress bar calculations
 
-// variables to store last action info for undo functionality
-let lastAction = null;
-let lastTask = null;
-let lastCompleted = null;
-let lastIndex = null;
-
-// for clear all
-let lastTasks = [];
-let lastCompletedList = [];
-
 // helper state functions
 
 function getCompletedCount() {
@@ -177,12 +167,13 @@ function undo() {
 }
 // end of AI code
 
-// local storage code, also AI helped with this, I just wanted the site to remember your tasks if you accidentally close the tab or refresh
+// local storage code, also AI helped with this, I just wanted the site to remember your tasks + history if you accidentally close the tab or refresh
 
 function saveToLocalStorage() {
     const data = {
         tasks,
         completed,
+        history,
         totalTasksEver,
         totalCompletedEver
     };
@@ -199,6 +190,7 @@ function loadFromLocalStorage() {
 
     tasks = data.tasks || [];
     completed = data.completed || [];
+    history = data.history || [];
     totalTasksEver = data.totalTasksEver || 0;
     totalCompletedEver = data.totalCompletedEver || 0;
 
